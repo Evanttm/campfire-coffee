@@ -1,4 +1,14 @@
-/*my css will be in here*/
+th, td {
+    color: blue;
+    width: 100px;
+}
 
 
-/*QUACK QUACK QUACK */
+
+
+
+.rgba-primary-0 { color: rgba(103, 50,  0,1) }	/* Main Primary color */
+.rgba-primary-1 { color: rgba( 65, 32,  2,1) }
+.rgba-primary-2 { color: rgba( 79, 39,  0,1) }
+.rgba-primary-3 { color: rgba(155, 76,  0,1) }
+.rgba-primary-4 { color: rgba(211,103,  0,1) }
