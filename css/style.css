@@ -1,7 +1,15 @@
 th, td {
-    color: blue;
-    width: 100px;
+    color: lightgray;
+    width: 350px;
 }
+body {
+    background-color: black;
+}
+
+p {
+  color: lightgray;
+}
+
 
 
 
