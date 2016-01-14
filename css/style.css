@@ -1,7 +1,26 @@
-th, td {
-    color: blue;
-    width: 100px;
+
+.navitem {
+  display: inline-block;
+  width: 70px;
 }
+
+th, td {
+    color: lightgray;
+    width: 150px;
+    text-align: center;
+}
+body {
+    background-color: black;
+}
+
+p {
+  color: lightgray;
+}
+url{
+background-repeat: no-repeat;
+background-size: cover;
+}
+
 
 
 
