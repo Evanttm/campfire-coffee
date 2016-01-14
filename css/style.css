@@ -11,6 +11,8 @@ th, td {
 }
 body {
     background-color: black;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 p {
