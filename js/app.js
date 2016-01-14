@@ -75,6 +75,7 @@ var seattleLake = new coffeeShop ("Seattle Lake Union",35,88,1.3,3.7);
 var seattlePublic = new coffeeShop ("Seattle Public Library",49,75,2.6,0.2);
 var seaTac = new coffeeShop ("Sea-Tac Airport",68,124,1.1,2.7);
 
+
              var coffeemas = new coffeeMaster();
 
               coffeemas.addShop(pikePlace);
@@ -136,3 +137,87 @@ function myCreateFunction() {
     var cell = row.insertCell(0);
     cell.innerHTML = "<b>Coffee Shop Data</b>";
 };
+
+// var data_location = [];
+// for (var i = 0; i < data.names.length; i++) {
+//
+//   data_location[i] = new Location(data.names[i], data.customer_min[i], data.customer_max[i], data.lbs_ave[i]);
+// }
+//
+// var data_loc = [];
+// for (i = 0; i < data_location.length; i++) {
+//   data_loc[i] = [data_time.hours, data_location[i].total_hour, data_location[i].cust_hour, data_location[i].cup_hour, data_location[i].cup_hour_lb, data_location[i].lbs_hour];
+// }
+
+
+
+//
+// for (var i = 0; i < data_loc.length; i++) {
+//   var loc_tbl = document.createElement('p');
+//   document.body.appendChild(loc_tbl);
+//   var loc_tbl_header = document.createElement('h3');
+//   loc_tbl_header.textContent = data_location[i].loc_name + ' Estimated Sales:';
+//   loc_tbl.appendChild(loc_tbl_header);
+//   // create and fill table
+//   var tbl = document.createElement('table');
+//   loc_tbl.appendChild(tbl);
+//
+//   // create and fill table header info.
+//   for (var j = 0; j < columns.length; j++) {
+//     var tbl_head = function() {
+//       var head = document.createElement('th');
+//       head.textContent = columns[j];
+//       tbl.appendChild(head);
+//     }();
+//   }
+//
+//   // create and fill table rows.
+//   for (var j = data_time.hour_open; j < data_time.hour_close; j++) {
+//     var row = document.createElement('tr');
+//     tbl.appendChild(row);
+//
+//     for (var k = 0; k < data_loc[i].length; k++){  // fill table rows.
+//       var td = document.createElement('td');
+//       if (typeof(data_loc[i][k][j - data_time.hour_open]) !== 'string') {
+//         td.textContent = (Math.round(data_loc[i][k][j - data_time.hour_open] * 10 ) / 10);
+//       }
+//       else {
+//         td.textContent = data_loc[i][k][j - data_time.hour_open];
+//       }
+//       row.appendChild(td);
+//     }
+//   }
+// }
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// rendertable(){
+//   for(x){
+//
+//   }
+//
+// for(i){
+//
+//   for(y){
+//
+//
+//
+//
+//
+//   }
+// }
+//
+//
+// }

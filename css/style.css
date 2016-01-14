@@ -1,6 +1,13 @@
+
+.navitem {
+  display: inline-block;
+  width: 70px;
+}
+
 th, td {
     color: lightgray;
-    width: 350px;
+    width: 150px;
+    text-align: center;
 }
 body {
     background-color: black;
@@ -8,6 +15,10 @@ body {
 
 p {
   color: lightgray;
+}
+url{
+background-repeat: no-repeat;
+background-size: cover;
 }
 
 
