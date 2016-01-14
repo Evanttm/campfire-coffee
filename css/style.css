@@ -11,19 +11,48 @@ th, td {
 }
 body {
     background-color: black;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 p {
   color: lightgray;
 }
-url{
-background-repeat: no-repeat;
-background-size: cover;
+
+form{
+  color: lightgray;
 }
 
+h2{
+  color: lightgray;
+}
+a: link, a:visited{
 
+}
+a: hover, a:active {
 
+}
+.mainHeader img {
+  width: 30%
+  height:auto;
+  margin: 2% 0;
+}
+.mainHeaderNav nav {
+  background-color: black;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+.mainHeaderNav nav ul{
+  list-style: none;
+  margin: 0 auto;
+}
 
+}
+.body{
+  margin: 0 auto;
+  width: 70%;
+  clear: both;
+}
 
 
 .rgba-primary-0 { color: rgba(103, 50,  0,1) }	/* Main Primary color */

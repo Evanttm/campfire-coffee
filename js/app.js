@@ -1,7 +1,7 @@
 'use strict';
 
 var data = {
-  names: ['Pike\'s Place Market', 'Capitol Hill', 'Seattle Public Library', 'South Lake Union', 'Sea-Tac Airport', 'Website'],
+  names: ['Pike Place Market', 'Capitol Hill', 'Seattle Public Library', 'South Lake Union', 'Sea-Tac Airport', 'Website'],
   customerMin: [14, 32, 49, 35, 68, 3],
   customerMax: [55, 48, 75, 88, 124, 6],
   cupAvg: [1.2, 3.2, 2.6, 1.3, 1.1, 0],
@@ -128,3 +128,20 @@ for (var i = 0; i < data_loc.length; i++) {
     }
   }
 }
+
+
+
+
+
+//
+// //
+// // var comment = function(userName, text){
+// //   this.userName=userName;
+// //   this.text = text;
+// // };
+//
+//
+// //comment.prototype.render = function(){
+//   //var liEl = document.createElement('li');
+//   //liEl.innerHTML = '<img width="100px" src="img/' + this.userName + '.jpg'
+// }/
