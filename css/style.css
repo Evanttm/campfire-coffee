@@ -1,10 +1,13 @@
-
+table{
+  border: 1px solid black;
+}
 .navitem {
   display: inline-block;
   width: 70px;
 }
 
 th, td {
+    border: 15px solid lightgrat;
     color: lightgray;
     width: 150px;
     text-align: center;
@@ -49,17 +52,3 @@ a: hover, a:active {
   list-style: none;
   margin: 0 auto;
 }
-
-}
-.body{
-  margin: 0 auto;
-  width: 70%;
-  clear: both;
-}
-
-
-.rgba-primary-0 { color: rgba(103, 50,  0,1) }	/* Main Primary color */
-.rgba-primary-1 { color: rgba( 65, 32,  2,1) }
-.rgba-primary-2 { color: rgba( 79, 39,  0,1) }
-.rgba-primary-3 { color: rgba(155, 76,  0,1) }
-.rgba-primary-4 { color: rgba(211,103,  0,1) }
