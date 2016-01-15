@@ -128,20 +128,3 @@ for (var i = 0; i < data_loc.length; i++) {
     }
   }
 }
-
-
-
-
-
-//
-// //
-// // var comment = function(userName, text){
-// //   this.userName=userName;
-// //   this.text = text;
-// // };
-//
-//
-// //comment.prototype.render = function(){
-//   //var liEl = document.createElement('li');
-//   //liEl.innerHTML = '<img width="100px" src="img/' + this.userName + '.jpg'
-// }/

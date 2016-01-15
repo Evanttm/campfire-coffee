@@ -26,12 +26,15 @@ form{
 h2{
   color: lightgray;
 }
+
 a: link, a:visited{
 
 }
 a: hover, a:active {
 
 }
+
+
 .mainHeader img {
   width: 30%
   height:auto;
