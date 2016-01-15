@@ -1,27 +1,17 @@
-table{
-  border: 1px solid black;
+main{
+  display: flex;
 }
-.navitem {
-  display: inline-block;
-  width: 70px;
+nav > ul{
+  display: flex;
+  justify-content:  space-between;
 }
 
 th, td {
-    border: 15px solid lightgrat;
-    color: lightgray;
-    width: 150px;
-    text-align: center;
-}
-body {
-    background-color: black;
-    background-size: cover;
-    background-attachment: fixed;
-}
-
-p {
+  border: 15px solid lightgrat;
   color: lightgray;
+  width: 150px;
+  text-align: center;
 }
-
 form{
   color: lightgray;
 }
@@ -29,26 +19,11 @@ form{
 h2{
   color: lightgray;
 }
-
-a: link, a:visited{
-
+p {
+  color: lightgray;
 }
-a: hover, a:active {
-
-}
-
-
-.mainHeader img {
-  width: 30%
-  height:auto;
-  margin: 2% 0;
-}
-.mainHeaderNav nav {
+body {
   background-color: black;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-}
-.mainHeaderNav nav ul{
-  list-style: none;
-  margin: 0 auto;
+  background-size: cover;
+  background-attachment: fixed;
 }
