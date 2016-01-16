@@ -19,11 +19,13 @@ form{
 h2{
   color: lightgray;
 }
-p {
+p, div {
   color: lightgray;
 }
 body {
   background-color: black;
   background-size: cover;
   background-attachment: fixed;
+  /*background-image: url("/Users/evantatum/Downloads/background%20coffeeShop.png");
+  }*/
 }
