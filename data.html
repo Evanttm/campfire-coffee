@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <style media="screen">
+    body {
+  background-image: url("/Users/evantatum/Downloads/background%20coffeeShop.png");
+}
+    </style>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- <link rel="stylesheet" href="css/skeleton.css"> -->
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+
+    <form id="coffeeShop">
+      <fieldset>
+        <legend>New Coffee Shop</legend>
+
+        <label for="name">Location: </label>
+        <input type="text" name="locationName">
+
+        <label for="customerMin">Minimum customers: </label>
+        <input type="number" name="customerMin">
+
+        <label for="customerMax">Maximum customers: </label>
+        <input type="number" name="customerMax">
+
+        <label for="cupsAvg">Average cups: </label>
+        <input type="number" name="cupsAvg">
+
+        <label for="lbsAvg">Average pounds: </label>
+        <input type="number" name="lbsAvg">
+
+        <button id="enter" type="submit">Submit</button>
+      </fieldset>
+    </form>
+    <table id="tableData"></table>
+    <script src='js/app.js'>
+    </script>
+  </body>
+</html>

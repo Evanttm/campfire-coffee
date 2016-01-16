@@ -1,139 +1,154 @@
-var hours = ['6:00am', '7:00am',  '8:00am', '9:00am', '10:00am' ,'11:00am', '12:00pm' , ' 1:00pm', '2:00pm' , '3:00pm' , '4:00pm' , '5:00pm' , '6:00pm' , '7:00pm', '8:00pm', '9:00pm'];
+'use strict';
 
+var data = {
+    names: ['Pike Place Market', 'Capitol Hill', 'Seattle Public Library', 'South Lake Union', 'Sea-Tac Airport', 'Website'],
+    customerMin: [14, 32, 49, 35, 68, 3],
+    customerMax: [55, 48, 75, 88, 124, 6],
+    cupAvg: [1.2, 3.2, 2.6, 1.3, 1.1, 0],
+    lbsAvg: [3.7, 0.4, 0.2, 3.7, 2.7, 6.7]
+}
 
+function calcCustHour(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-var coffeeMaster = function() {
-         this.coffeeShops = [];
-         this.addShop = function(shop){
-           this.coffeeShops.push(shop);
-         };
-//          this.generateReport = function(){
-//            for (var i = 0; i < this.coffeeShops.length; i++){
-//              console.log("The " + this.coffeeShops[i].location + " location needs to have " + this.coffeeShops[i].getcoffeePerHour() + " coffees per hour, and " + this.coffeeShops[i].getcoffeePerDay() + " Lbs per day.");
-//            }
-//          };
-       };
+function calcCupHour(cust_hour, cupAvg) {
+    return (cust_hour * cupAvg);
+}
 
-var coffeeShop = function(location,min,max,avg,pound,hours) {
-    this.location = location;
-    this.min = min;
-    this.max = max;
-    this.avg = avg;
-    this.pound = pound;
-    this.perHour = [];
-    this.coffeePerDay = 0;
-    this.customerHour = [];
-    this.customersPerHour = function(){
-      return (Math.floor(Math.random() * (this.max - this.min + 1)) + this.min);
-     };
-    this.getcoffeePerHour = function(){
-      for (var i = 0; i < 16; i++) {
-        this.perHour.push(Math.round(this.customerHour[i] * this.avg));
-      }
-     };
-     this.getcoffeePerDay = function(){
-           for (var i = 0; i < 16; i++) {
-              this.coffeePerDay += this.perHour[i];
+function calcCupHourlbs(cupHour) {
+    return (cupHour / 20);
+}
+
+function calcLbsHour(cust_hour, lbsAvg) {
+    return (cust_hour * lbsAvg);
+}
+
+function calcTotalHour(cup_hour_lbs, lbs_hour) {
+    return (cup_hour_lbs + lbs_hour);
+}
+
+var data_time = {
+    hour_open: 6,
+    hour_close: 21,
+    hours: [''],
+
+    getHours: function() {
+        for (var i = this.hour_open; i < this.hour_close; i++) {
+            var y = i - this.hour_open;
+            if (i < 12) {
+                data_time.hours[y] = (i + ':00am');
+            } else if (i === 12) {
+                data_time.hours[y] = (i + ' noon');
+            } else {
+                data_time.hours[y] = (i - 12 + ':00pm');
             }
-            return this.coffeePerDay;
+        }
+    }
+}
+data_time.getHours();
+
+var data_location = [];
+for (var i = 0; i < data.names.length; i++) {
+    data_location[i] = new Location(data.names[i], data.customerMin[i], data.customerMax[i], data.cupAvg[i], data.lbsAvg[i]);
+}
+
+
+function Location(name, min, max, cupAvg, lbsAvg) {
+    this.loc_name = name;
+    this.customerMin = min;
+    this.customerMax = max;
+    this.cupsAvg = cupAvg;
+    this.lbsAvg = lbsAvg;
+    this.cust_hour = [];
+    this.cup_hour = [];
+    this.cup_hour_lb = [];
+    this.lbs_hour = [];
+    this.total_hour = [];
+    this.reportValues = [data_time.hours, this.total_hour, this.cust_hour,                    this.cup_hour, this.cup_hour_lb, this.lbs_hour];
+    this.getMath = function() {
+        for (var i = data_time.hour_open; i < data_time.hour_close; i++) {
+            var y = i - data_time.hour_open;
+
+            this.cust_hour.push(calcCustHour(this.customerMin, this.customerMax));
+            this.cup_hour.push(calcCupHour(this.cust_hour[y], this.cupsAvg));
+            this.cup_hour_lb.push(calcCupHourlbs(this.cup_hour[y]));
+            this.lbs_hour.push(calcLbsHour(this.cust_hour[y], this.lbsAvg));
+            this.total_hour.push(calcTotalHour(this.cup_hour_lb[y], this.lbs_hour[y]));
+        }
     };
-this.getCustomer = function() {
-  for (var i = 0; i < 16; i++) {
-    this.customerHour.push(this.customersPerHour());
-  }
+    this.getMath();
+    renderAll(this.loc_name, this.reportValues);
+}
+
+function renderAll(name, reportValues) {
+
+  var columns = [
+      'Hour',
+      'Total lbs.',
+      'Customers/Hour',
+      'Cups/Hour',
+      'Cup/hour (lbs)',
+      'lbs./Hour'
+  ];
+
+      var loc_tbl = document.createElement('p');
+      document.body.appendChild(loc_tbl);
+      var loc_tbl_header = document.createElement('h2');
+      loc_tbl_header.textContent =  name + ' Sales:';
+      loc_tbl.appendChild(loc_tbl_header);
+
+      //changed 'table to 'tableData
+      var tbl = document.createElement('tableData');
+      loc_tbl.appendChild(tbl);
+
+      for (var y = 0; y < columns.length; y++) {
+          var tbl_head = function() {
+              var head = document.createElement('th');
+              head.textContent = columns[y];
+              tbl.appendChild(head);
+          }();
+      }
+
+      for (var y = data_time.hour_open; y < data_time.hour_close; y++) {
+          var row = document.createElement('tr');
+          tbl.appendChild(row);
+
+          for (var z = 0; z < reportValues.length; z++) {
+              var td = document.createElement('td');
+
+
+              if (typeof(reportValues[z][y - data_time.hour_open]) !== 'string') {
+                  td.textContent = (Math.round(reportValues[z][y - data_time.hour_open] * 10) / 10);
+              } else {
+                  td.textContent = reportValues[z][y - data_time.hour_open];
+              }
+              row.appendChild(td);
+          }
+      }
+}
+
+var coffeeShop = document.getElementById('coffeeShop');
+
+function handleSubmit(event) {
+  event.preventDefault(); //gotta have it. prevents page reload
+
+
+   var name = event.target.locationName.value;
+   var customerMin = event.target.customerMin.value;
+   var customerMax = event.target.customerMax.value;
+   var cupAvg = event.target.cupsAvg.value;
+   var lbsAvg = event.target.lbsAvg.value;
+
+
+
+   var newShop = new Location(name, customerMin, customerMin, cupAvg, lbsAvg);
+
+   data_location.push(newShop);
+
+
+
+   //renderAll();
 };
-this.getCustomer();
-this.getcoffeePerHour();
-this.getcoffeePerDay();
-};
 
-
-coffeeShop.prototype.renderShopRow = function() {
- this.generateHourly();
- var tableDataEl = document.getElementById('tableData');
-
- var trEl = document.createElement('tr');
- var tdEl = document.createElement('td');
- tdEl.textContent = this.locName;
- trEl.appendChild(tdEl);
- var tdElem = document.createElement('td');
- tdElem.textContent = this.total;
- trEl.appendChild(tdElem);
-
- for (var i = 0; i < this.perHourArray.length; i++) {
-
-   var tdEl = document.createElement('td');
-   tdEl.textContent = this.perHourArray[i];
-   trEl.appendChild(tdEl);
- }
- tableDataEl.appendChild(trEl);
-};
-
-var pikePlace = new coffeeShop ("Pike Place Market", 14, 55, 1.2, 3.7);
-var capitolHill = new coffeeShop ("Capitol Hill",32,48,3.2,0.4);
-var seattleLake = new coffeeShop ("Seattle Lake Union",35,88,1.3,3.7);
-var seattlePublic = new coffeeShop ("Seattle Public Library",49,75,2.6,0.2);
-var seaTac = new coffeeShop ("Sea-Tac Airport",68,124,1.1,2.7);
-             //
-            //  var coffeemas = new coffeeMaster();
-             //
-            //   coffeemas.addShop(pikePlace);
-            //   coffeemas.addShop(capitolHill);
-            //   coffeemas.addShop(seattleLake);
-            //   coffeemas.addShop(seattlePublic);
-            //   coffeemas.addShop(seaTac);
-
-
-              // coffeemas.generateReport();
-
-
-              function renderHeadRow() {
-                var paragraph = document.createElement('p');
-                document.body.appendChild(paragraph);
-                var headding = document.createElement('h1');
-                headding.textContent = "PikePlace";
-                paragraph.appendChild(headding);
-                var tableDataEl = document.createElement("table");
-                paragraph.appendChild(tableDataEl);
-                // var trEl= document.createElement("tr");
-                // tableDataEl.appendChild(trEl);
-                var thEl1 = document.createElement("th");
-                thEl1.textContent = "Time";
-                tableDataEl.appendChild(thEl1);
-                var thEl2 = document.createElement("th");
-                thEl2.textContent = "Customers";
-                tableDataEl.appendChild(thEl2);
-                var thEl3 = document.createElement("th");
-                thEl3.textContent = "Lbs";
-                tableDataEl.appendChild(thEl3);
-                var thEl4 = document.createElement("th");
-                thEl4.textContent = "total";
-                tableDataEl.appendChild(thEl4);
-
-                for ( var i = 0; i < hours.length; i++) {
-                  var trEl = document.createElement("tr");
-                  tableDataEl.appendChild(trEl);
-                  var tdEl1 = document.createElement("td");
-                  tdEl1.textContent = hours[i];
-                  trEl.appendChild(tdEl1);
-                  var tdEl2 = document.createElement("td");
-                  tdEl2.textContent = pikePlace.customerHour[i];
-                  trEl.appendChild(tdEl2);
-                  var tdEl3 = document.createElement("td");
-                  tdEl3.textContent = pikePlace.perHour[i];
-                  trEl.appendChild(tdEl3);
-                  var tdEl4 = document.createElement("td");
-                  tdEl4.textContent = pikePlace.coffeePerDay;
-                  trEl.appendChild(tdEl4);
-                }
-              };
-
-              renderHeadRow();
-
-              function myCreateFunction() {
-    var table = document.getElementById("myTable");
-    var header = table.createTHead();
-    var row = header.insertRow(0);
-    var cell = row.insertCell(0);
-    cell.innerHTML = "<b>Coffee Shop Data</b>";
-};
+coffeeShop.addEventListener('submit', handleSubmit);

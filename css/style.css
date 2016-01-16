@@ -1,14 +1,31 @@
-th, td {
-    color: blue;
-    width: 100px;
+main{
+  display: flex;
+}
+nav > ul{
+  display: flex;
+  justify-content:  space-between;
 }
 
+th, td {
+  border: 15px solid lightgrat;
+  color: lightgray;
+  width: 150px;
+  text-align: center;
+}
+form{
+  color: lightgray;
+}
 
-
-
-
-.rgba-primary-0 { color: rgba(103, 50,  0,1) }	/* Main Primary color */
-.rgba-primary-1 { color: rgba( 65, 32,  2,1) }
-.rgba-primary-2 { color: rgba( 79, 39,  0,1) }
-.rgba-primary-3 { color: rgba(155, 76,  0,1) }
-.rgba-primary-4 { color: rgba(211,103,  0,1) }
+h2{
+  color: lightgray;
+}
+p, div {
+  color: lightgray;
+}
+body {
+  background-color: black;
+  background-size: cover;
+  background-attachment: fixed;
+  /*background-image: url("/Users/evantatum/Downloads/background%20coffeeShop.png");
+  }*/
+}
