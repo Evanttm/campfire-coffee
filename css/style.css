@@ -1,3 +1,6 @@
+hgroup{
+  color: lightgray;
+}
 main{
   display: flex;
 }
@@ -26,6 +29,11 @@ body {
   background-color: black;
   background-size: cover;
   background-attachment: fixed;
-  /*background-image: url("/Users/evantatum/Downloads/background%20coffeeShop.png");
-  }*/
+  background-image: url("/Users/evantatum/Downloads/background%20coffeeShop.png");
+
+}
+
+img{
+  width: 200px;
+  height: 100px;
 }
